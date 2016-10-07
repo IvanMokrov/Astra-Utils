@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Astra NICNT Utils", "SRC\Astra NCNT Utils\Astra NICNT Utils.csproj", "{275EC38A-A6BF-4E12-B1E0-6B1897768735}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Astra NICNT Utils", "SRC\Astra NICNT Utils\Astra NICNT Utils.csproj", "{275EC38A-A6BF-4E12-B1E0-6B1897768735}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
