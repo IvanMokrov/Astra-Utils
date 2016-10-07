@@ -177,7 +177,7 @@ namespace Astra_NICNT_Utils.Model
         }
 
 
-        [Obsolete("Code required refreshing to get all file types")]
+        [Obsolete("(Check it) Code required refreshing to get all file types")]
         private void RebuildSourcePathData()
         {
             DirectoryInfo root = new DirectoryInfo(SourcePath);
