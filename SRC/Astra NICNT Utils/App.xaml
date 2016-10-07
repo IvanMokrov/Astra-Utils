@@ -11,6 +11,7 @@
             <ResourceDictionary.MergedDictionaries>
                 
                 <ResourceDictionary Source="Theme/DarkTheme_brushes.xaml"/>
+                <ResourceDictionary Source="Theme/DarkTheme_icons.xaml"/>
                 <ResourceDictionary Source="Theme/DarkTheme_controls.xaml"/>
                 <ResourceDictionary Source="Theme/DarkTheme_scroll.xaml"/>
                 <ResourceDictionary Source="Theme/DarkTheme_button.xaml"/>

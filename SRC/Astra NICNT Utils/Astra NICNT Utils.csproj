@@ -121,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
+    <Page Include="Theme\DarkTheme_icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Theme\DarkTheme_window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
