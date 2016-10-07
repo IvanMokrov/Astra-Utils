@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Security.Permissions;
 using System.Security.Principal;
 
 namespace Astra_NICNT_Utils.Utils

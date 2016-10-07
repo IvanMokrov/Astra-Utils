@@ -11,7 +11,6 @@ namespace Astra_NICNT_Utils.Utils
         public int Position;
     }
 
-
     public static class CollectionViewExtensionMethods
     {
 

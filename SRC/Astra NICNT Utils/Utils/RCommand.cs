@@ -28,7 +28,6 @@ namespace Astra_NICNT_Utils.Utils
             return _canExecute == null || _canExecute(parameter);
         }
 
-
         public void Execute(object parameter)
         {
             _execute(parameter);
