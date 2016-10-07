@@ -3,14 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Astra_NICNT_Utils"
         xmlns:vm="clr-namespace:Astra_NICNT_Utils.ViewModel"
-        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Astra_NICNT_Utils.MainWindow"
+        x:Class="Astra_NICNT_Utils.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" 
         Width="900" d:DesignHeight="900"
         FontFamily="Consolas"
-    Style="{StaticResource WindowMainStyle}"
+        Style="{StaticResource WindowMainStyle}"
+    
         d:DataContext="{d:DesignInstance {x:Type vm:MainWindowVM}, IsDesignTimeCreatable=True}"
         Closed="Window_Closed" >
 
