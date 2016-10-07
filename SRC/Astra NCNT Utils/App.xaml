@@ -1,0 +1,27 @@
+﻿<Application
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Astra_NICNT_Utils"
+             x:Class="Astra_NICNT_Utils.App"
+             StartupUri="MainWindow.xaml">
+    
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                
+                <ResourceDictionary Source="Theme/DarkTheme_brushes.xaml"/>
+                <ResourceDictionary Source="Theme/DarkTheme_controls.xaml"/>
+                <ResourceDictionary Source="Theme/DarkTheme_scroll.xaml"/>
+                <ResourceDictionary Source="Theme/DarkTheme_button.xaml"/>
+                <ResourceDictionary Source="Theme/DarkTheme_datagrid.xaml"/>
+                <ResourceDictionary Source="Theme/DarkTheme_tooltip.xaml"/>
+                <ResourceDictionary Source="Theme/DarkTheme_window.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Application.Resources>
+    
+    
+</Application>

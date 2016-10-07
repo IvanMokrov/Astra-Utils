@@ -1,0 +1,70 @@
+﻿<Window
+        x:Class="Astra_NICNT_Utils.View.XmlChecker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Astra_NICNT_Utils.View"
+        xmlns:vm="clr-namespace:Astra_NICNT_Utils.ViewModel"
+        xmlns:model="clr-namespace:Astra_NICNT_Utils.Model"
+        mc:Ignorable="d"
+        Title="Checking Xml"
+        Width="450" d:DesignHeight="300"
+        FontFamily="Consolas"
+        SnapsToDevicePixels="True"
+        d:DataContext="{d:DesignInstance {x:Type vm:MainWindowVM}, IsDesignTimeCreatable=True}">
+
+    <Window.Background>
+        <ImageBrush ImageSource="/Astra NICNT Utils;component/Resources/Background/b4.jpg" Stretch="None"/>
+    </Window.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3" />
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Background="{StaticResource Background.L-D}"/>
+
+        <Grid Grid.Row="2" Background="{StaticResource Background.Menu}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="85"/>
+                <ColumnDefinition Width="85"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1" Margin="6,6,3,6" Content="Delete" Command="{Binding BtnDeleteXml_Click}"/>
+            <Button Grid.Column="2" Margin="3,6,6,6" Content="Close" Click="btnClose_Click"/>
+        </Grid>
+
+        <!--d:DataContext="{d:DesignInstance {x:Type model:CXmlData}}"-->
+        
+        <DataGrid Margin="6,12,6,6" 
+                  Background="{x:Null}" 
+                  ItemsSource="{Binding XmlViewSource.View}" 
+                  IsReadOnly="True" 
+                  SelectionUnit="FullRow">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding LibraryName}" Header="Library name" 
+                                    Width="150"
+                                    ElementStyle="{StaticResource DataGrid.TextStyle1}"
+                                    EditingElementStyle="{StaticResource DataGrid.TextEditingStyle1}" />
+                <DataGridTextColumn Binding="{Binding VendorCompany}" Header="Vendor company" 
+                                    Width="100"
+                                    ElementStyle="{StaticResource DataGrid.TextStyle1}"
+                                    EditingElementStyle="{StaticResource DataGrid.TextEditingStyle1}"/>
+                <DataGridTextColumn Binding="{Binding SnpID}" Header="SNP ID" 
+                                    Width="60"
+                                    ElementStyle="{StaticResource DataGrid.TextStyle1}"
+                                    EditingElementStyle="{StaticResource DataGrid.TextEditingStyle1}"/>
+                <DataGridTextColumn Binding="{Binding SourcePath}" Header="Source" 
+                                    Width="100"
+                                    ElementStyle="{StaticResource DataGrid.TextStyle1}"
+                                    EditingElementStyle="{StaticResource DataGrid.TextEditingStyle1}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
+

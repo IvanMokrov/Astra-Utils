@@ -1,0 +1,193 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Astra_NICNT_Utils"
+        xmlns:vm="clr-namespace:Astra_NICNT_Utils.ViewModel"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Astra_NICNT_Utils.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Width="900" d:DesignHeight="900"
+        FontFamily="Consolas"
+    Style="{StaticResource WindowMainStyle}"
+        d:DataContext="{d:DesignInstance {x:Type vm:MainWindowVM}, IsDesignTimeCreatable=True}"
+        Closed="Window_Closed" >
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <CollectionViewSource x:Key="InstrumentsSource" Source="{Binding Path=NicntData.Instruments}"/>
+            <CollectionViewSource x:Key="MonolithsSource" Source="{Binding Path=NicntData.Monoliths}"/>
+
+            <Geometry x:Key="DocumentPlus">M50,45C51.6570014953613,45,53,46.3429985046387,53,48L53,51 56,51C57.6570014953613,51 59,52.3429985046387 59,54 59,55.6570014953613 57.6570014953613,57 56,57L53,57 53,60C53,61.6570014953613 51.6570014953613,63 50,63 48.3429985046387,63 47,61.6570014953613 47,60L47,57 44,57C42.3429985046387,57 41,55.6570014953613 41,54 41,52.3429985046387 42.3429985046387,51 44,51L47,51 47,48C47,46.3429985046387,48.3429985046387,45,50,45z M28,1.96399974822998L50,22.007999420166 31,22.007999420166C29.3430004119873,22.007999420166,28,20.6620006561279,28,19.0009994506836L28,1.96399974822998z M16,1.96399974822998L25,1.96399974822998 25,19.0009994506836C25,22.32200050354,27.6860008239746,25.0139999389648,31,25.0139999389648L50,25.0139999389648 50,42C46.6860008239746,42 44,44.6860008239746 44,48 40.6860008239746,48 38,50.6860008239746 38,54 38,57.3139991760254 40.6860008239746,60 44,60L9,60C7.34299993515015,60,6,58.6570014953613,6.00000047683716,57L6.00000047683716,4.99999952316284C6,3.34299993515015,7.34299993515015,2,9,1.99999988079071L16,1.99999988079071 16,1.96399974822998z</Geometry>
+            <Geometry x:Key="Document">M13,3L29,3 29,20.0009994506836C29,23.32200050354,31.6860008239746,26.0139999389648,35,26.0139999389648L54,26.0139999389648 54,58C54,59.6570014953613,52.6570014953613,61,51,61L13,61C11.3430004119873,61,10,59.6570014953613,10,58L10,6C10,4.34299993515015,11.3430004119873,3,13,3z M32,2.96400022506714L54,23.007999420166 35,23.007999420166C33.3429985046387,23.007999420166,32,21.6620006561279,32,20.0009994506836L32,2.96400022506714z</Geometry>
+            <Geometry x:Key="DocumentOpen">M49,36C49.8279991149902,36,50.5779991149902,36.3359985351563,51.1209983825684,36.8790016174316L58.1209983825684,43.8790016174316C58.6640014648438,44.4220008850098 59,45.1720008850098 59,46 59,47.6570014953613 57.6570014953613,49 56,49 55.1720008850098,49 54.4220008850098,48.6640014648438 53.8790016174316,48.1220016479492L52,46.2430000305176 52,60C52,61.6570014953613 50.6570014953613,63 49,63 47.3429985046387,63 46,61.6570014953613 46,60L46,46.2430000305176 44.1209983825684,48.1209983825684C43.5779991149902,48.6640014648438 42.8279991149902,49 42,49 40.3429985046387,49 39,47.6570014953613 39,46 39,45.1720008850098 39.3359985351563,44.4220008850098 39.8790016174316,43.8790016174316L46.8790016174316,36.8790016174316C47.4220008850098,36.3359985351563,48.1720008850098,36,49,36z M27,0.999999940395355L27.0389995574951,0.999999940395355 49,21.007999420166 30,21.007999420166C28.3430004119873,21.007999420166,27,19.6620006561279,27,18.0009994506836L27,0.999999940395355z M8,0.999999940395355L24,0.999999940395355 24,18.0009994506836C24,21.32200050354,26.6860008239746,24.0139999389648,30,24.0139999389648L49,24.0139999389648 49,33C47.3429985046387,33,45.8429985046387,33.6720008850098,44.7569999694824,34.7569999694824L37.7569999694824,41.7569999694824C36.6720008850098,42.8429985046387 36,44.3429985046387 36,46 36,49.3139991760254 38.6860008239746,52 42,52 42.3429985046387,52 42.6730003356934,51.9539985656738 43,51.898998260498L43,59 8,59C6.34299993515015,59,5,57.6570014953613,4.99999952316284,56L4.99999952316284,3.99999976158142C5,2.34299993515015,6.34299993515015,1,8,0.999999940395355z</Geometry>
+            <Geometry x:Key="DocumentSave">M49,36C50.6570014953613,36,52,37.3429985046387,52,39L52,52.7569999694824 53.8790016174316,50.8790016174316C54.4220008850098,50.3359985351563 55.1720008850098,50 56,50 57.6570014953613,50 59,51.3429985046387 59,53 59,53.8289985656738 58.6640014648438,54.5789985656738 58.1209983825684,55.1209983825684L51.1209983825684,62.1209983825684C50.5779991149902,62.6640014648438 49.8279991149902,63 49,63 48.1720008850098,63 47.4220008850098,62.6640014648438 46.8790016174316,62.1209983825684L39.8790016174316,55.1209983825684C39.3359985351563,54.5779991149902 39,53.8279991149902 39,53 39,51.3429985046387 40.3429985046387,50 42,50 42.8279991149902,50 43.5779991149902,50.3359985351563 44.1209983825684,50.8779983520508L46,52.7569999694824 46,39C46,37.3429985046387,47.3429985046387,36,49,36z M27,0.999999940395355L27.0389995574951,0.999999940395355 49,21.007999420166 30,21.007999420166C28.3430004119873,21.007999420166,27,19.6620006561279,27,18.0009994506836L27,0.999999940395355z M8,0.999999940395355L24,0.999999940395355 24,18.0009994506836C24,21.32200050354,26.6860008239746,24.0139999389648,30,24.0139999389648L49,24.0139999389648 49,33C45.6860008239746,33,43,35.6860008239746,43,39L43,47.101001739502C42.6730003356934,47.0460014343262 42.3429985046387,47 42,47 38.6860008239746,47 36,49.6860008239746 36,53 36,54.6570014953613 36.6720008850098,56.1570014953613 37.757999420166,57.2430000305176L39.5149993896484,59 8,59C6.34299993515015,59,5,57.6570014953613,4.99999952316284,56L4.99999952316284,3.99999976158142C5,2.34299993515015,6.34299993515015,1,8,0.999999940395355z</Geometry>
+            <Geometry x:Key="DocumentFullScreen">M61,46C62.6570014953613,46,64,47.3429985046387,64,49L64,61C64,62.6570014953613,62.6570014953613,64,61,64L49,64C47.3429985046387,64 46,62.6570014953613 46,61 46,59.3429985046387 47.3429985046387,58 49,58L58,58 58,49C58,47.3429985046387,59.3429985046387,46,61,46z M3,46C4.65700006484985,46,6,47.3429985046387,6,49L6,58 15,58C16.6569995880127,58 18,59.3429985046387 18,61 18,62.6570014953613 16.6569995880127,64 15,64L3,64C1.34300005435944,64,0,62.6570014953613,0,61L0,49C0,47.3429985046387,1.34300005435944,46,3,46z M15,15L15,49 49,49 49,15 15,15z M9,9L55,9 55,55 9,55 9,9z M49,0L61,0C62.6570014953613,0,64,1.34300005435944,64,3L64,15C64,16.6569995880127 62.6570014953613,18 61,18 59.3429985046387,18 58,16.6569995880127 58,15L58,6 49,6C47.3429985046387,6 46,4.65700006484985 46,3 46,1.34300005435944 47.3429985046387,0 49,0z M3,0L15,0C16.6569995880127,0 18,1.34300005435944 18,3 18,4.65700006484985 16.6569995880127,6 15,6L6,6 6,15C6,16.6569995880127 4.65700006484985,18 3,18 1.34300005435944,18 0,16.6569995880127 0,15L0,3C0,1.34300005435944,1.34300005435944,0,3,0z</Geometry>
+            <Geometry x:Key="ArrowLeft">M41,11C42.6570014953613,11 44,12.3430004119873 44,14 44,14.9099998474121 43.5940017700195,15.7250003814697 42.9539985656738,16.2759990692139L27.2360000610352,31.9939994812012 43.1599998474121,47.9169998168945C43.6790008544922,48.4580001831055 44,49.1910018920898 44,50 44,51.6570014953613 42.6570014953613,53 41,53 40.1910018920898,53 39.4580001831055,52.6790008544922 38.9179992675781,52.1599998474121L38.9169998168945,52.1609992980957 20.9169998168945,34.1609992980957 20.9179992675781,34.1599998474121C20.3519992828369,33.6139984130859 20,32.8489990234375 20,32.0009994506836 20,31.9979991912842 20,31.996000289917 20,31.9939994812012 20,31.9909992218018 20,31.9890003204346 20,31.9869995117188 20,31.1389999389648 20.3519992828369,30.3740005493164 20.9179992675781,29.8279991149902L20.9169998168945,29.8269996643066 38.9169998168945,11.8269996643066 38.9249992370605,11.835000038147C39.4640007019043,11.3179998397827,40.1940002441406,11,41,11z</Geometry>
+            <Geometry x:Key="ArrowRight">M23,11C23.8059997558594,11,24.5359992980957,11.3179998397827,25.0750007629395,11.835000038147L25.0830001831055,11.8269996643066 43.0830001831055,29.8269996643066 43.0820007324219,29.8279991149902C43.6479988098145,30.3740005493164 44,31.1389999389648 44,31.9869995117188 44,31.9890003204346 44,31.992000579834 44,31.9939994812012 44,31.996000289917 44,31.9979991912842 44,32 44,32.8479995727539 43.6479988098145,33.6129989624023 43.0820007324219,34.1590003967285L43.0830001831055,34.1599998474121 25.0830001831055,52.1599998474121 25.0820007324219,52.1590003967285C24.5419998168945,52.6790008544922 23.8090000152588,53 23,53 21.3430004119873,53 20,51.6570014953613 20,50 20,49.1910018920898 20.3209991455078,48.4580001831055 20.8409996032715,47.9179992675781L20.8400001525879,47.9169998168945 36.7639999389648,31.9930000305176 21.0459995269775,16.2749996185303C20.4060001373291,15.7250003814697 20,14.9099998474121 20,14 20,12.3430004119873 21.3430004119873,11 23,11z</Geometry>
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Grid.Column="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="47" />
+            <RowDefinition Height="3" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="3" />
+            <RowDefinition Height="150" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource Background.Menu}">
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Style="{StaticResource ButtonSymbolic}" Margin="6,4,2,4" ToolTip="New NICNT project" Width="45">
+                    <Path Style="{StaticResource ButtonPathStyle}" Data="{StaticResource DocumentPlus}" UseLayoutRounding="True"/>
+                </Button>
+                <Button Style="{StaticResource ButtonSymbolic}" Margin="20,4,2,4" ToolTip="Open NICNT project" Width="45">
+                    <Path Style="{StaticResource ButtonPathStyle}" Data="{StaticResource DocumentOpen}" UseLayoutRounding="True"/>
+                </Button>
+                <Button Style="{StaticResource ButtonSymbolic}" Margin="2,4,2,4" ToolTip="Save NICNT project" Width="45">
+                    <Path Style="{StaticResource ButtonPathStyle}" Data="{StaticResource DocumentSave}" UseLayoutRounding="True"/>
+                </Button>
+                <Button Style="{StaticResource ButtonSymbolic}" Margin="20,4,2,4" ToolTip="Scan and start XML checker" Width="45"
+                        Content="XML" FontWeight="Bold" FontSize="20" 
+                        Click="btnXML_OnClick"/>
+                <Button Style="{StaticResource ButtonSymbolic}" Margin="2,4,2,4" ToolTip="Scan and start windows registry checker" Width="45"
+                        Content="REG" FontWeight="Bold" FontSize="20"
+                        Click="btnREG_OnClick"/>
+                <Button x:Name="btnPayPal" Style="{StaticResource ButtonSymbolic}"  Margin="20,4,2,4" Width="45" HorizontalAlignment="Right">
+                    <Image Margin="3,3,2,2" Source="Resources/paypal.png"/>
+                </Button>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="1" Background="{StaticResource Background.D-L}" />
+        <Grid Grid.Row="3" Background="{StaticResource Background.L-D}" />
+
+        <Grid Grid.Row="2">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible">
+                <StackPanel>
+
+                    <!--=======================-->
+                    <Grid Width="635" Margin="6,20,6,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="24" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="Source library folder:"/>
+                        <TextBox IsReadOnly="True" Grid.Column="1" 
+                                    Text="{Binding NicntData.SourcePath, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                    ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"
+                                    Margin="0,0,5,0"/>
+                        <Button Grid.Column="2" Content="···"  Command="{Binding BtnSourceFolder_Click}"/>
+                    </Grid>
+
+                    <!--=======================-->
+                    <Label Content="Library name:" HorizontalAlignment="Center" Margin="6,15,6,6"/>
+                    <TextBox FontSize="24" Width="635" Margin="6,0,6,6" 
+                                ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"
+                                Text="{Binding NicntData.LibraryName, ValidatesOnDataErrors=True}"/>
+
+                    <!--=======================-->
+                    <Label Margin="6,20,6,6" Content="Background skin image :" HorizontalAlignment="Center"/>
+                    <Border Cursor="Hand" ForceCursor="True"
+                            Background="{StaticResource Background.Light}" Width="635"
+                            Height="101">
+                        <Image Width="635" Height="99" Source="{Binding Wallpaper}" Cursor="Hand" ForceCursor="True" Stretch="None" />
+                    </Border>
+
+                    <!--=======================-->
+                    <Grid Width="635" Margin="6,26,6,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="24" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="SNP ID:" HorizontalAlignment="Left" Margin="1"/>
+                        <TextBox Grid.Column="1" Margin="0,0,5,0"
+                                    Text="{Binding NicntData.SNPID, ValidatesOnDataErrors=True}"/>
+                        <Button Grid.Column="2" Content="···"/>
+                    </Grid>
+
+                    <!--=======================-->
+                    <Grid Width="635" Margin="6,0,6,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="Vendor company:" HorizontalAlignment="Left" Margin="1"/>
+                        <TextBox Grid.Column="1" Margin="0,0,0,0" 
+                                    Text="{Binding NicntData.VendorCompany, ValidatesOnDataErrors=True}"/>
+                    </Grid>
+
+                    <!--=======================-->
+                    <Grid Width="635" HorizontalAlignment="Center">
+                        <Label Margin="6,15,6,6" Content="Instruments:" HorizontalAlignment="Center"/>
+                        <Button Style="{StaticResource ButtonSymbolic}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="23" Height="23" Margin="4,4,0,4">
+                            <Path Style="{StaticResource ButtonPathStyle}" Margin="3" Data="{StaticResource DocumentFullScreen}"/>
+                        </Button>
+                    </Grid>
+
+                    <DataGrid Width="635" ItemsSource="{Binding Source={StaticResource InstrumentsSource}}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding SourceFilePath}" Header="Source path" Width="2.0*"
+                                                ElementStyle="{StaticResource DataGrid.TextStyle1}"
+                                                EditingElementStyle="{StaticResource DataGrid.TextEditingStyle1}" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding DisplayName}" Header="Display name" Width="1.5*"
+                                                ElementStyle="{StaticResource DataGrid.TextStyle1}"
+                                                EditingElementStyle="{StaticResource DataGrid.TextEditingStyle1}" />
+                            <DataGridTextColumn Binding="{Binding Bank}" Header="DB Bank name" Width="1.5*"
+                                                ElementStyle="{StaticResource DataGrid.TextStyle1}"
+                                                EditingElementStyle="{StaticResource DataGrid.TextEditingStyle1}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!--=======================-->
+                    <Grid Width="635" HorizontalAlignment="Center">
+                        <Label Margin="6,20,6,6" Content="Multi:" HorizontalAlignment="Center"/>
+                        <Button Style="{StaticResource ButtonSymbolic}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="23" Height="23" Margin="4,4,0,4">
+                            <Path Style="{StaticResource ButtonPathStyle}" Margin="3" Data="{StaticResource DocumentFullScreen}"/>
+                        </Button>
+                    </Grid>
+                    <DataGrid Margin="0,0,0,20" Width="635" ItemsSource="{Binding Source={StaticResource MonolithsSource}}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding SourceFilePath}" Header="Source path" Width="2.5*"
+                                                ElementStyle="{StaticResource DataGrid.TextStyle1}"
+                                                EditingElementStyle="{StaticResource DataGrid.TextEditingStyle1}" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding Bank}" Header="DB Bank name" Width="1.5*"
+                                                ElementStyle="{StaticResource DataGrid.TextStyle1}"
+                                                EditingElementStyle="{StaticResource DataGrid.TextEditingStyle1}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Row="4" Background="{StaticResource Background.Menu}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="17*" />
+                <ColumnDefinition Width="115" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="txtLog" Margin="6" VerticalScrollBarVisibility="Visible" IsReadOnly="True" TextWrapping="WrapWithOverflow" VerticalContentAlignment="Top" />
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Margin="6,6,6,0" Content="Build" Command="{Binding BtnBuild_Click}" />
+                <Button Grid.Row="1" Margin="6" Content="Close" Click="btnCancel_Click" />
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

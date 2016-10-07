@@ -1,0 +1,138 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Astra_NICNT_Utils">
+
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="False"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource Control.BtnTextForegroundEnabled}"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="StoryBtnMouseOver">
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnRectangle" Storyboard.TargetProperty="Fill">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource Background.ButtonOver}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnRectangle" Storyboard.TargetProperty="Effect">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BtnFxNormal}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnRectangle" Storyboard.TargetProperty="Stroke">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource Control.BorderMouseOver}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="StoryBtnMousePressed">
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnRectangle" Storyboard.TargetProperty="Fill">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource Background.ButtonPressed}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnRectangle" Storyboard.TargetProperty="Effect">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BtnFxPressed}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnRectangle" Storyboard.TargetProperty="Stroke">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource Control.BorderBlack}"/>
+                            </ObjectAnimationUsingKeyFrames>-->
+                        </Storyboard>
+                        <Storyboard x:Key="StoryBtnFocused">
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnRectangle" Storyboard.TargetProperty="Stroke">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource Control.BorderFocused}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="StoryBtnUnfocused">
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnRectangle" Storyboard.TargetProperty="Stroke">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource Control.BorderBlack}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="StoryBtnDisabled">
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnRectangle" Storyboard.TargetProperty="Fill">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource Background.ButtonDisabled}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="btnRectangle" Storyboard.TargetProperty="Effect">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource BtnFxPressed}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="MouseOver"/>
+                                <VisualState x:Name="Pressed"/>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Focused"/>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="ValidationStates">
+                                <VisualState x:Name="InvalidFocused"/>
+                                <VisualState x:Name="InvalidUnfocused"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Rectangle x:Name="btnRectangle" Effect="{StaticResource BtnFxNormal}" RadiusY="3" RadiusX="3" StrokeThickness="0.5" Fill="{StaticResource Background.ButtonNormal}" Stroke="{StaticResource Control.BorderBlack}"/>
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="StoryBtnUnfocused_BeginStoryboard" Storyboard="{StaticResource StoryBtnUnfocused}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="StoryBtnFocused_BeginStoryboard" Storyboard="{StaticResource StoryBtnFocused}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="StoryBtnMouseOver_BeginStoryboard"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="StoryBtnMouseOver_BeginStoryboard" Storyboard="{StaticResource StoryBtnMouseOver}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="StoryBtnMousePressed_BeginStoryboard"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="StoryBtnMousePressed_BeginStoryboard" Storyboard="{StaticResource StoryBtnMousePressed}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="StoryBtnDisabled_BeginStoryboard"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="StoryBtnDisabled_BeginStoryboard" Storyboard="{StaticResource StoryBtnDisabled}"/>
+                            </Trigger.EnterActions>
+                            <Setter Property="Foreground" Value="{StaticResource Control.BtnTextForegroundDisabled}"/>
+                        </Trigger>
+                        
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="False"/>
+                                <Condition Property="Tag" Value="ButtonSymbolic"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Foreground" Value="{StaticResource Control.BtnSymbolicForegroundDisabled}"/>
+                        </MultiTrigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+
+    <Style x:Key="ButtonSymbolic" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Tag" Value="ButtonSymbolic"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource Control.BtnSymbolicForegroundEnabled}" />
+    </Style>
+
+    
+    <Style x:Key="ButtonPathStyle" TargetType="{x:Type Path}">
+        <Setter Property="Fill" Value="{Binding Path=Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+        <Setter Property="Stroke" Value="{x:Null}" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="Margin" Value="4" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    
+</ResourceDictionary>

@@ -1,0 +1,78 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Astra_NICNT_Utils">
+
+
+    <Color                  x:Key="TextBrush.E0Color">#FFE8E8E8</Color>
+    <Color                  x:Key="TextBrush.F0Color">#FFF0F0F0</Color>
+    <Color                  x:Key="Control.GlyphColor">#FFD1D1D1</Color>
+
+
+    <Color                  x:Key="Background.LightColor">#FF454545</Color>
+    <Color                  x:Key="Background.DarkColor">#FF353535</Color>
+    <SolidColorBrush        x:Key="Background.Light"    Color="{StaticResource Background.LightColor}"/>
+    <SolidColorBrush        x:Key="Background.Dark"     Color="{StaticResource Background.DarkColor}"/>
+
+    <ImageBrush             x:Key="Background.Texture.B1" ImageSource="/Astra NICNT Utils;component/Resources/Background/b1.jpg" Stretch="None"/>
+    <ImageBrush             x:Key="Background.Texture.B2" ImageSource="/Astra NICNT Utils;component/Resources/Background/b2.jpg" Stretch="None"/>
+    <ImageBrush             x:Key="Background.Texture.B3" ImageSource="/Astra NICNT Utils;component/Resources/Background/b3.jpg" Stretch="None"/>
+    <ImageBrush             x:Key="Background.Texture.B4" ImageSource="/Astra NICNT Utils;component/Resources/Background/b4.jpg" Stretch="None"/>
+    
+    <SolidColorBrush        x:Key="Background.CellSelected" Color="#FF1E1E1E"/>
+    <SolidColorBrush        x:Key="Background.CellSelectedInative" Color="#BB1E1E1E"/>
+    <SolidColorBrush        x:Key="Background.Menu"         Color="#83151518"/>
+
+    <DropShadowEffect x:Key="BtnFxNormal" BlurRadius="2" ShadowDepth="1" Opacity="0.395"/>
+    <DropShadowEffect x:Key="BtnFxPressed" BlurRadius="2" ShadowDepth="0" Opacity="0.395"/>
+
+    <SolidColorBrush x:Key="Control.Background"      Color="#FF2D2D30"/>
+    <SolidColorBrush x:Key="Control.BorderBlack"     Color="#FF000000"/>
+    <SolidColorBrush x:Key="Control.BorderMouseOver" Color="#FF2E24EA"/>
+    <SolidColorBrush x:Key="Control.BorderFocused"   Color="#FF569DE5"/>
+    <SolidColorBrush x:Key="Control.GlyphBrush"      Color="{StaticResource Control.GlyphColor}"/>
+
+    <SolidColorBrush x:Key="TextBrush.Static"   Color="#FFEFDAD0"/>
+    <SolidColorBrush x:Key="TextBrush.E0"       Color="#FFE8E8E8"/>
+    <SolidColorBrush x:Key="TextBrush.F0"       Color="#FFF0F0F0"/>
+    <SolidColorBrush x:Key="TextBrush.White"    Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="TextBrush.Disabled" Color="#FFA69686"/>
+
+    <SolidColorBrush x:Key="Background.ButtonDisabled" Color="#11323235" />
+    <SolidColorBrush x:Key="Control.BtnSymbolicForegroundEnabled" Color="#FF888888" />
+    <SolidColorBrush x:Key="Control.BtnSymbolicForegroundDisabled" Color="#99000000" />
+
+    <SolidColorBrush x:Key="Control.BtnTextForegroundEnabled" Color="{DynamicResource TextBrush.E0Color}" />
+    <SolidColorBrush x:Key="Control.BtnTextForegroundDisabled" Color="#FF000000" />
+
+    <LinearGradientBrush    x:Key="Background.D-L" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="{StaticResource Background.DarkColor}" Offset="0" />
+        <GradientStop Color="{StaticResource Background.LightColor}" Offset="1" />
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush    x:Key="Background.L-D" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="{StaticResource Background.LightColor}" Offset="0" />
+        <GradientStop Color="{StaticResource Background.DarkColor}" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush    x:Key="Background.ButtonNormal" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF323235" Offset="0"/>
+        <GradientStop Color="#FF2D2D30" Offset="0.5"/>
+        <GradientStop Color="#FF252525" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush    x:Key="Background.ButtonOver" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF37373A" Offset="0"/>
+        <GradientStop Color="#FF37373A" Offset="0.5"/>
+        <GradientStop Color="#FF37373A" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush    x:Key="Background.ButtonPressed" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF28282D" Offset="0"/>
+        <GradientStop Color="#FF28282D" Offset="0.5"/>
+        <GradientStop Color="#FF28282D" Offset="1"/>
+    </LinearGradientBrush>
+    
+
+</ResourceDictionary>
+    
+    
